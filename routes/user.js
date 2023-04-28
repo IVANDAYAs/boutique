@@ -33,7 +33,7 @@ router.post("/checkout", async (req, res) => {
         var flag = await Product.findOne({ _id: data });
         temp = Number(temp) + flag.price;
 
-        if ((productID.length - 1) === i) {
+        if ((productID.length) === i + 1) {
             payment();
         }
 
