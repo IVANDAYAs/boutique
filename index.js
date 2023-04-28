@@ -20,17 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const admin = require("./routes/admin");
+const user = require("./routes/user");
 app.use("/admin", admin);
-
-app.get("/products", async (req,res)=>{
-    try {
-        const products = await Product.find({ });
-        res.status(200).json(products);
-        } 
-    catch (err) {
-        console.log(err);
-    }
-})
+app.use("/user", user);
 
 app.listen(process.env.PORT || 4000, () => {
     console.log("started");
