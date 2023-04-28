@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-var temp = 0;
 const Product = require("../models/Product");
 
 //razorpay api
@@ -29,6 +28,7 @@ router.get("/products", async (req, res) => {
 router.post("/checkout", async (req, res) => {
 
     const productID = req.body.productId;
+    var temp = 0;
     productID.map(async (data, i) => {
         var flag = await Product.findOne({ _id: data });
         temp = Number(temp) + flag.price;
