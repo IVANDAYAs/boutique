@@ -45,14 +45,15 @@ router.post("/login", (req, res) => {
 })
 
 router.post("/addProduct", passport.authenticate('jwt', { session: false }), upload.single('img'), async (req, res) => {
-    const buffer = await sharp(req.file.buffer).png().toBuffer();
+    const buffer = await sharp(req.file.buffer).png().toBuffer(); //3:4
     const b64 = Buffer.from(buffer).toString('base64');
     // const mimeType = 'image/png';
     const newProduct = new Product({
         imgUrl: b64,
         category: req.body.category,
         size: req.body.size,
-        price: req.body.price
+        price: req.body.price,
+        color: req.body.color
     })
     newProduct.save()
         .then(() => {

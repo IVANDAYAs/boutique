@@ -34,6 +34,7 @@ router.post("/checkout", async (req, res) => {
         temp = Number(temp) + flag.price;
 
         if ((productID.length) === i + 1) {
+            console.log(i);
             payment();
         }
 

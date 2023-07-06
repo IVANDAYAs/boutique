@@ -3,18 +3,21 @@ const Schema = mongoose.Schema;
 
 
 const productSchema = new Schema({
-    imgUrl:{
-        type : String
+    imgUrl: {
+        type: String
     },
-    category:{
-        type : String
+    category: {
+        type: String
     },
-    size:{
-        type : String
+    size: {
+        type: Array
     },
-    price:{
-        type : Number
+    price: {
+        type: Object
+    },
+    color: {
+        type: Object
     }
 });
 
-module.exports = mongoose.model("Product",productSchema,"products");
+module.exports = mongoose.model("Product", productSchema, "products");
