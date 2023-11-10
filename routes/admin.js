@@ -67,11 +67,7 @@ router.post("/addProduct", passport.authenticate('jwt', { session: false }), upl
 
 router.post("/delete", passport.authenticate('jwt', { session: false }), (req,res) => {
 
-    Product.deleteMany({_id: { $in: req.body.id}}, function(err) {
-        if(err){
-            res.status(404).json(err)
-        }
-    })
+    Product.deleteMany({_id: { $in: req.body.id}})
     
 })
 
