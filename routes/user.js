@@ -28,6 +28,7 @@ router.get("/products", async (req, res) => {
 router.post("/checkout", async (req, res) => {
     
     const checkoutArray = req.body.checkoutArray;
+    console.log(checkoutArray);
     var temp = 0;
     checkoutArray.map(async (data, i) => {
         var flag = await Product.findOne({ _id: data.productID });
