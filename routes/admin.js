@@ -68,6 +68,12 @@ router.post("/addProduct", passport.authenticate('jwt', { session: false }), upl
 router.post("/delete", passport.authenticate('jwt', { session: false }), (req,res) => {
 
     Product.deleteMany({_id: { $in: req.body.id}})
+    .then((data)=>{
+        console.log(data);
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
     
 })
 
