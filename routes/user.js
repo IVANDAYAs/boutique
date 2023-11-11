@@ -26,21 +26,23 @@ router.get("/products", async (req, res) => {
 })
 
 router.post("/checkout", async (req, res) => {
-
-    const productID = req.body.productId;
+    
+    const checkoutArray = req.body.checkoutArray;
     var temp = 0;
-    productID.map(async (data, i) => {
-        var flag = await Product.findOne({ _id: data });
-        temp = Number(temp) + flag.price;
+    checkoutArray.map(async (data, i) => {
+        var flag = await Product.findOne({ _id: data.productID });
+        var flag1 = data.size;
+        temp = Number(temp) + flag.price[flag1];
 
-        if ((productID.length) === i + 1) {
-            console.log(i);
+        if ((checkoutArray.length) === i + 1) {
+            // console.log(temp);
             payment();
         }
 
     })
 
     function payment() {
+       
         const options = {
             amount: temp * 100, // amount == Rs 10
             currency: "INR",
