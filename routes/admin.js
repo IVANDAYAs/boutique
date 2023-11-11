@@ -66,14 +66,13 @@ router.post("/addProduct", passport.authenticate('jwt', { session: false }), upl
 })
 
 router.post("/delete", passport.authenticate('jwt', { session: false }), (req,res) => {
-        console.log(req);
-        console.log(req.body.id);
+ 
     Product.deleteMany({_id: { $in: req.body.id}})
     .then((data)=>{
-        console.log(data);
+        res.json({msg:"deleted successfully"});
     })
     .catch((err)=>{
-        console.log(err);
+        res.json(err);
     })
     
 })
